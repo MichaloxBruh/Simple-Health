@@ -26,9 +26,10 @@ function ENT:Use( activator )
 
 	if activator:IsPlayer() then 
 
+		local name2 = activator:GetName()
 		activator:SetHealth("99999999")
 		sound.Play(UseSound, self:GetPos(), 75, 100, 1)
-		PrintMessage(HUD_PRINTTALK, "You picked up a medkit with infinite health!")
+		PrintMessage(HUD_PRINTTALK, name2 .. " picked up a medkit with infinite health!")
 		self:Remove()
 	end
 

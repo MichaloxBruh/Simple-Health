@@ -2,6 +2,8 @@ include("autorun/sh_health.lua")
 --print ("pizza ==============================================")
 --Written by Michalox 2022
 
+local CONVARENABLE = GetConVar("SH_EnableSimpleHealth"):GetInt()
+
 
 local isInfAmmoMode = false 
 
@@ -11,7 +13,7 @@ local mySender
 
 local GoodSound = Sound( "garrysmod/save_load1.wav" )
 
-
+local VERSIONSHSERVER = "1.8" -- CHANGE THIS EVERY TIME YOU UPDATE, AND THE OTHER ONE IN annoucement.lua, also changelog
 
 
 
@@ -65,7 +67,7 @@ hook.Add("PlayerSay", "my_mymodmichaloxhealth", function(sender, text, teamChat)
 		userName = sender:GetName()
 		isInfAmmoMode = false 
  		sound.Play(GoodSound, sender:GetPos(), 75, 100, 100)
- 		sender:ChatPrint("Infinite Ammo Mode Disable for " .. userName)
+ 		sender:ChatPrint("Infinite Ammo Mode Disabled for " .. userName)
  	end
 
 	function playerfire()
@@ -105,8 +107,30 @@ hook.Add("PlayerSay", "my_mymodmichaloxhealth", function(sender, text, teamChat)
 	if text == "!help" then 
 		
 		
-		sender:ChatPrint("([SimpleHealth])Type !hp for health, or type !ar for armor, there is also !setmaxhp for setting your max health too anything you want.")  --also infammo 1 or 0 for infinite ammo 
+		sender:ChatPrint("([SimpleHealth])")  --also infammo 1 or 0 for infinite ammo 
+		sender:ChatPrint("HELP MENU")
+		sender:ChatPrint("!hp *number* -- sets your desired health")
+		sender:ChatPrint("!ar *number* -- sets your desired armor")
+		sender:ChatPrint("!infammo 1/0 -- enables or disables infinite ammo mode")
+		sender:ChatPrint("!setmaxhp *number* -- sets your desired maximum health")
+		sender:ChatPrint("!changelog -- changelog ")
+	
+	
+	
+	
 	end
+
+	if text == "!changelog" then
+		sender:ChatPrint("Current Version: " .. VERSIONSHSERVER)
+		sender:ChatPrint("Fixed Infinite Ammo Mode")
+		sender:ChatPrint("Small Fixes")
+	end
+
+
+
+
+
+
 end)
 
 	if isInfAmmoMode == true then 

@@ -26,9 +26,10 @@ function ENT:Use( activator )
 
 	if activator:IsPlayer() then 
 
+		local name = activator:GetName()
 		activator:SetArmor("99999")
 		sound.Play(UseSound, self:GetPos(), 75, 100, 1)
-		PrintMessage(HUD_PRINTTALK, "You picked up a battery with infinite armor!")
+		PrintMessage(HUD_PRINTTALK, name .. " picked up a battery with infinite armor!")
 		self:Remove()
 	end
 

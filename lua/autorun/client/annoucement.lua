@@ -1,5 +1,5 @@
 CreateClientConVar("SH_DisableChatMessage", "0", FCVAR_NONE, "Disable's the info message on startup", nil, nil)
-local VERSIONSH = "DEV"
+local VERSIONSHAU = "1.8"
 
 
 
@@ -9,16 +9,12 @@ timer.Simple(5, function()
 	if DisableChatMessage == 0 then 
 		surface.PlaySound("bell.wav")
 		chat.AddText(Color(255,50,50), "([Simple Health])")
-		chat.AddText(Color(255,255,255), "Current version: " .. VERSIONSH)
-		chat.AddText(Color(255,255,255), "Type !help for commands")
+		chat.AddText(Color(185,77,77), "Current version: " .. VERSIONSHAU)
+		chat.AddText(Color(206,166,166), "Type !help for commands")
+		chat.AddText(Color(206,166,166), "Type !changelog for the changelog of the latest update")
 		chat.AddText(Color(255,100,100), "To disable this message use the console command SH_DisableChatMessage 1")		
 	end
 end)
 
-
-net.Receive("HELPCOMMAND", function()
-	chat.AddText(Color(255,0,0), "([Simple Health])")
-	chat.AddText(Color(241,82,82), "HELP MENU")
-end)
 
 
