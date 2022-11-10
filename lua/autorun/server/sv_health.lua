@@ -2,7 +2,7 @@ include("autorun/sh_health.lua")
 --print ("pizza ==============================================")
 --Written by Michalox 2022
 
-local CONVARENABLE = GetConVar("SH_EnableSimpleHealth"):GetInt()
+--local CONVARENABLE = GetConVar("SH_EnableSimpleHealth"):GetInt()
 
 
 local isInfAmmoMode = false 
@@ -13,7 +13,7 @@ local mySender
 
 local GoodSound = Sound( "garrysmod/save_load1.wav" )
 
-local VERSIONSHSERVER = "1.8" -- CHANGE THIS EVERY TIME YOU UPDATE, AND THE OTHER ONE IN annoucement.lua, also changelog
+local VERSIONSHSERVER = "1.8" -- CHANGE THIS EVERY TIME YOU UPDATE, AND THE OTHER ONE IN annoucement.lua, also changelogsender:ChatPrint("Fixed Infinite Ammo Mode")
 
 
 
