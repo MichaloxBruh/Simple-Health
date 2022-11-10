@@ -1,7 +1,7 @@
 include("autorun/sh_health.lua")
 --print ("pizza ==============================================")
 
-util.AddNetworkString("HELPCOMMAND")
+
 
 local isInfAmmoMode = false 
 
@@ -109,10 +109,9 @@ hook.Add("PlayerSay", "my_mymodmichaloxhealth", function(sender, text, teamChat)
 	end
 
 	if text == "!help" then 
-		net.Start("HELPCOMMAND")
-		net.Broadcast
 		
-		--sender:ChatPrint("([SimpleHealth])Type !hp for health, or type !ar for armor, there is also !setmaxhp for setting your max health too anything you want.")  --also infammo 1 or 0 for infinite ammo 
+		
+		sender:ChatPrint("([SimpleHealth])Type !hp for health, or type !ar for armor, there is also !setmaxhp for setting your max health too anything you want.")  --also infammo 1 or 0 for infinite ammo 
 	end
 end)
 
