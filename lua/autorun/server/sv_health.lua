@@ -1,6 +1,6 @@
 include("autorun/sh_health.lua")
 --print ("pizza ==============================================")
-
+--Written by Michalox 2022
 
 
 local isInfAmmoMode = false 
@@ -11,32 +11,20 @@ local mySender
 
 local GoodSound = Sound( "garrysmod/save_load1.wav" )
 
-function playerfire()
-	--print("playerfire()")
-	mySender:GiveAmmo(1, "Pistol", false)
-	mySender:GiveAmmo(1, "AR2", false)
-	mySender:GiveAmmo(1, "AR2AltFire", false)
-	mySender:GiveAmmo(1, "SMG1", false)
-	mySender:GiveAmmo(1, "357", false)
-	mySender:GiveAmmo(1, "XBowBolt", false)
-	mySender:GiveAmmo(1, "Buckshot", false)
-	mySender:GiveAmmo(1, "RPG_Round", false)
-	mySender:GiveAmmo(1, "SMG1_Grenade", false)
-	mySender:GiveAmmo(1, "slam", false)
-end
 
 
 
 
 
-
-hook.Add("EntityFireBullets","fireweapon", function(entity, data)
-	print("console")
-	if isInfAmmoMode then
-		playerfire() 
+hook.Add( "Tick", "CheckPlayer1Forward", function() 
+	if isInfAmmoMode then 
+		if mySender:KeyPressed(IN_ATTACK) then 
+			if isInfAmmoMode then
+				playerfire() 
+			end 
+		end
 	end 
-
-end)	 
+end)  
 
 
 
@@ -46,14 +34,7 @@ end)
 
 hook.Add("PlayerSay", "my_mymodmichaloxhealth", function(sender, text, teamChat)
 
-	if text == "!infammo 1" then 
-		sound.Play("funnynoise.mp3", sender:GetPos(), 75, 100, 100)
-		PrintMessage(HUD_PRINTTALK, "This command is under debugging, it will be back soon")
-	elseif text == "!infammo 0" then
-		sound.Play("funnynoise.mp3", sender:GetPos(), 75, 100, 100)
-		PrintMessage(HUD_PRINTTALK, "This command is under debugging, it will be back soon")
-	end 
-
+	
 	if text == "!fart" then 
 		sound.Play("funnynoise.mp3", sender:GetPos(), 75, 100, 100)
 	end
@@ -74,17 +55,30 @@ hook.Add("PlayerSay", "my_mymodmichaloxhealth", function(sender, text, teamChat)
 
 
 
- --[[ 	if text == "!infammo 1" then 
+ 	if text == "!infammo 1" then 
  		userName = sender:GetName()
 		mySender = sender 
- 		isInfAmmoMode = true  
+		isInfAmmoMode = true  
  		sound.Play(GoodSound, sender:GetPos(), 75, 100, 100)
- 		sender:ChatPrint("Infinite Ammo Mode On")
+ 		sender:ChatPrint("Infinite Ammo Mode Enabled for " .. userName)
  	elseif text == "!infammo 0" then 
- 		isInfAmmoMode = false 
+		userName = sender:GetName()
+		isInfAmmoMode = false 
  		sound.Play(GoodSound, sender:GetPos(), 75, 100, 100)
- 		sender:ChatPrint("Infinite Ammo Mode Off")
- 	end--]] 
+ 		sender:ChatPrint("Infinite Ammo Mode Disable for " .. userName)
+ 	end
+
+	function playerfire()
+
+		local SenderWeapon = mySender:GetActiveWeapon()
+		local SenderAmmo = SenderWeapon:GetPrimaryAmmoType()
+	
+	
+		mySender:GiveAmmo(20,SenderAmmo,true)
+	end
+
+
+
 
 
 
