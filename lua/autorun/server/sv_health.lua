@@ -76,7 +76,7 @@ hook.Add("PlayerSay", "my_mymodmichaloxhealth", function(sender, text, teamChat)
 		local SenderAmmo = SenderWeapon:GetPrimaryAmmoType()
 	
 	
-		mySen	-der:GiveAmmo(20,SenderAmmo,true)
+		mySender:GiveAmmo(20,SenderAmmo,true)
 	end
 
 
